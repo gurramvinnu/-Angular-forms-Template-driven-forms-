@@ -1,0 +1,55 @@
+html :---
+
+<div class="card w-100 mx-auto" style="text-align:center">
+  <h4 class="card-header text-center">Sign Up</h4>
+  <div class="card-body">
+    <form #signupForm="ngForm" (ngSubmit)="submitForm(signupForm)">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" class="form-control" [(ngModel)]="user.fullName" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-control" [(ngModel)]="user.email" required email>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" [(ngModel)]="user.password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" [(ngModel)]="user.confirmPassword" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+app.componts.ts:------
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  user = {
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  };
+
+  submitForm(form: any) {
+    if (form.valid) {
+      console.log(this.user);
+      // Add your form submission logic here
+    }
+  }
+}
